@@ -1,26 +1,40 @@
 import 'package:calendarro/calendarro.dart';
 import 'package:calendarro/date_utils.dart';
+import 'package:calendarro/dot.dart';
 import 'package:flutter/material.dart';
 
-class CalendarroDayItem extends StatelessWidget {
-  CalendarroDayItem({this.date, this.calendarroState, this.onTap});
+import 'calendarro.dart';
 
-  DateTime date;
+const Color colorGreen = const Color(0xffD0DB98);
+const Color colorOrange = const Color(0xffF5AE3C);
+
+class CalendarroDayItem extends StatelessWidget {
+  CalendarroDayItem(
+      {@required this.date,
+      @required this.calendarroState,
+      @required this.onTap,
+      @required this.list});
+
+  final DateTime date;
   CalendarroState calendarroState;
-  DateTimeCallback onTap;
+  final DateTimeCallback onTap;
+  final List<MiniIcons> list;
 
   @override
   Widget build(BuildContext context) {
     bool isWeekend = DateUtils.isWeekend(date);
-    var textColor = isWeekend ? Colors.grey : Colors.black;
+    bool daySelected = calendarroState.isDateSelected(date);
+    var textColor =
+        daySelected ? Colors.white : (isWeekend ? Colors.grey : Colors.black);
+    FontWeight fontWeight = daySelected ? FontWeight.w800 : FontWeight.w600;
     bool isToday = DateUtils.isToday(date);
     calendarroState = Calendarro.of(context);
 
-    bool daySelected = calendarroState.isDateSelected(date);
-
     BoxDecoration boxDecoration;
     if (daySelected) {
-      boxDecoration = BoxDecoration(color: Colors.blue, shape: BoxShape.circle);
+      boxDecoration = BoxDecoration(
+          color: const Color(0xffF37D86),
+          borderRadius: BorderRadius.circular(4));
     } else if (isToday) {
       boxDecoration = BoxDecoration(
           border: Border.all(
@@ -30,20 +44,67 @@ class CalendarroDayItem extends StatelessWidget {
           shape: BoxShape.circle);
     }
 
+    bool isNotesAvailable = list.contains(MiniIcons.notes);
+    int number = 0;
+    list.forEach((element) {
+      if (element == MiniIcons.moods) number++;
+    });
+    print(
+        'CalendarroDayItem -------   ${date.day} ---  ${list.length}!--\nisNotesAvailable---$isNotesAvailable--------number-----$number---------');
     return Expanded(
         child: GestureDetector(
-          child: Container(
-              height: 40.0,
-              decoration: boxDecoration,
-              child: Center(
-                  child: Text(
-                    "${date.day}",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: textColor),
-                  ))),
-          onTap: handleTap,
-          behavior: HitTestBehavior.translucent,
-        ));
+      child: Container(
+        margin: EdgeInsets.all(2),
+        padding: EdgeInsets.only(top: 11, left: 5, right: 5,bottom: 9),
+        alignment: Alignment.topCenter,
+        height: 50.0,
+        width: 40.0,
+        decoration: boxDecoration,
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: [
+                isNotesAvailable
+                    ? Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 3),
+                          child: Image.asset(
+                              daySelected
+                                  ? 'assets/mini_icon_note_clicked.png'
+                                  : 'assets/mini_icon_note.png',
+                              width: 10,
+                              package: 'calendarro'),
+                        ),
+                      )
+                    : Container(),
+                Spacer(),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: number > 0
+                      ? DotsContainer(
+                          number > 2 ? 2 : number,
+                          (!daySelected ? colorGreen : Colors.white),
+                          (!daySelected ? colorOrange : Colors.white),
+                        )
+                      : Container(),
+                ),
+              ],
+            ),
+            Container(
+              alignment: Alignment.topCenter,
+              child: Text(
+                "${date.day}",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: textColor, fontWeight: fontWeight),
+              ),
+            ),
+          ],
+        ),
+      ),
+      onTap: handleTap,
+      behavior: HitTestBehavior.translucent,
+    ));
   }
 
   void handleTap() {
