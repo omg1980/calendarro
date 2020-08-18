@@ -49,8 +49,8 @@ class CalendarroDayItem extends StatelessWidget {
     list.forEach((element) {
       if (element == MiniIcons.moods) number++;
     });
-    print(
-        'CalendarroDayItem -------   ${date.day} ---  ${list.length}!--\nisNotesAvailable---$isNotesAvailable--------number-----$number---------');
+    // print(
+    //     'CalendarroDayItem -------   ${date.day} ---  ${list.length}!--\nisNotesAvailable---$isNotesAvailable--------number-----$number---------');
     return Expanded(
         child: GestureDetector(
       child: Container(

@@ -80,7 +80,7 @@ class Calendarro extends StatefulWidget {
           return list;
         });
       });
-      print('calendarro ---  ${miniIconsList.length}  --- ${miniIconsList.keys.toList()[0]}');
+      // print('calendarro ---  ${miniIconsList.length}  --- ${miniIconsList.keys.toList()[0]}');
       dayTileBuilder = DefaultDayTileBuilder(miniIconsList);
     }
 
