@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class CalendarroWeekdayLabelsView extends StatelessWidget {
@@ -5,13 +6,13 @@ class CalendarroWeekdayLabelsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Expanded(child: Text("Mon", textAlign: TextAlign.center)),
-        Expanded(child: Text("Tue", textAlign: TextAlign.center)),
-        Expanded(child: Text("Wed", textAlign: TextAlign.center)),
-        Expanded(child: Text("Thu", textAlign: TextAlign.center)),
-        Expanded(child: Text("Fri", textAlign: TextAlign.center)),
-        Expanded(child: Text("Sat", textAlign: TextAlign.center)),
-        Expanded(child: Text("Sun", textAlign: TextAlign.center)),
+        Expanded(child: Text("M", textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color: Colors.black38),)),
+        Expanded(child: Text("T", textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color: Colors.black38),)),
+        Expanded(child: Text("W", textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color: Colors.black38),)),
+        Expanded(child: Text("T", textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color: Colors.black38),)),
+        Expanded(child: Text("F", textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color: Colors.black38),)),
+        Expanded(child: Text("S", textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color: Colors.black38),)),
+        Expanded(child: Text("S", textAlign: TextAlign.center,style: TextStyle(fontSize: 12, color: Colors.black38),)),
       ],
     );
   }

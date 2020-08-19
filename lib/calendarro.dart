@@ -11,7 +11,7 @@ abstract class DayTileBuilder {
   Widget build(BuildContext context, DateTime date, DateTimeCallback onTap);
 }
 
-enum MiniIcons { moods, notes }
+enum MiniIcons { moods, symptoms, notes }
 enum DisplayMode { MONTHS, WEEKS }
 enum SelectionMode { SINGLE, MULTI, RANGE }
 

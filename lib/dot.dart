@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
 class DotsContainer extends StatelessWidget {
-  final int dotsNum;
+  final isMoodAvailable;
+  final isSymptomAvailable;
   final colorOne;
   final colorTwo;
-  const DotsContainer(this.dotsNum, this.colorOne, this.colorTwo);
+  const DotsContainer(this.isMoodAvailable, this.isSymptomAvailable,
+      this.colorOne, this.colorTwo);
 
   @override
   Widget build(BuildContext context) {
     List<Widget> dots = [];
-    for (var i = 0; i < dotsNum; i++) {
-      dots.add(Dot(3.0, i < dotsNum-1 ? colorOne : colorTwo));
-    }
+
+    dots.add(Dot(3.0, isMoodAvailable ? colorOne : Colors.transparent));
+    dots.add(Dot(3.0, isSymptomAvailable ? colorTwo : Colors.transparent));
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,13 +32,13 @@ class Dot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(radius),
-          child: Container(
+      child: Container(
         height: radius * 2,
         width: radius * 2,
         decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: color,
-           ),
+          shape: BoxShape.circle,
+          color: color,
+        ),
       ),
     );
   }
