@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 class DotsContainer extends StatelessWidget {
   final isMoodAvailable;
   final isSymptomAvailable;
+  final isHealthDataAvailable;
   final colorOne;
   final colorTwo;
-  const DotsContainer(this.isMoodAvailable, this.isSymptomAvailable,
-      this.colorOne, this.colorTwo);
+  final colorThree;
+  const DotsContainer(
+    this.isMoodAvailable,
+    this.isSymptomAvailable,
+    this.isHealthDataAvailable,
+    this.colorOne,
+    this.colorTwo,
+    this.colorThree,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +22,7 @@ class DotsContainer extends StatelessWidget {
 
     dots.add(Dot(3.0, isMoodAvailable ? colorOne : Colors.transparent));
     dots.add(Dot(3.0, isSymptomAvailable ? colorTwo : Colors.transparent));
+    dots.add(Dot(3.0, isHealthDataAvailable ? colorThree : Colors.transparent));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

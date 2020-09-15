@@ -7,6 +7,7 @@ import 'calendarro.dart';
 
 const Color colorGreen = const Color(0xffD0DB98);
 const Color colorOrange = const Color(0xffF5AE3C);
+const Color colorRed = const Color(0xffEC8187);
 
 class CalendarroDayItem extends StatelessWidget {
   CalendarroDayItem(
@@ -47,8 +48,9 @@ class CalendarroDayItem extends StatelessWidget {
     bool isNotesAvailable = list.contains(MiniIcons.notes);
     bool isMoodAvailable = list.contains(MiniIcons.moods);
     bool isSymptomAvailable = list.contains(MiniIcons.symptoms);
+    bool isHealthDataAvailable = list.contains(MiniIcons.health);
     // print(
-    //     'CalendarroDayItem -------   ${date.day} ---  ${list.length}!--\nisNotesAvailable---$isNotesAvailable--------number-----$number---------');
+    //     '$date --- $isNotesAvailable $isMoodAvailable $isSymptomAvailable $isHealthDataAvailable');
     return Expanded(
         child: GestureDetector(
       child: Container(
@@ -82,8 +84,10 @@ class CalendarroDayItem extends StatelessWidget {
                   child: DotsContainer(
                     isMoodAvailable,
                     isSymptomAvailable,
+                    isHealthDataAvailable,
                     (!daySelected ? colorGreen : Colors.white),
                     (!daySelected ? colorOrange : Colors.white),
+                    (!daySelected ? colorRed : Colors.white),
                   ),
                 ),
               ],
