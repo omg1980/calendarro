@@ -35,7 +35,7 @@ class Calendarro extends StatefulWidget {
   int startDayOffset;
   CalendarroState state;
 
-  double dayTileHeight = 40.0;
+  double dayTileHeight = 54.0;
   double dayLabelHeight = 20.0;
 
   Calendarro({
