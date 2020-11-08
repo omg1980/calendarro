@@ -71,7 +71,6 @@ class Calendarro extends StatefulWidget {
       Map<int, List<MiniIcons>> miniIconsList = {};
 
       activitiesList.forEach((day, value) {
-        // print('calendarro ---  ${miniIconsList.keys.toList()[0]}');
         miniIconsList.putIfAbsent(day, () {
           List<MiniIcons> list = [];
           value.forEach((element) {
@@ -80,7 +79,6 @@ class Calendarro extends StatefulWidget {
           return list;
         });
       });
-      // print('calendarro ---  ${miniIconsList.length}  --- ${miniIconsList.keys.toList()[0]}');
       dayTileBuilder = DefaultDayTileBuilder(miniIconsList);
     }
 

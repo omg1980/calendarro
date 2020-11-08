@@ -49,8 +49,6 @@ class CalendarroDayItem extends StatelessWidget {
     bool isMoodAvailable = list.contains(MiniIcons.moods);
     bool isSymptomAvailable = list.contains(MiniIcons.symptoms);
     bool isHealthDataAvailable = list.contains(MiniIcons.health);
-    // print(
-    //     '$date --- $isNotesAvailable $isMoodAvailable $isSymptomAvailable $isHealthDataAvailable');
     return Expanded(
         child: GestureDetector(
       child: Container(
@@ -81,13 +79,15 @@ class CalendarroDayItem extends StatelessWidget {
                 Spacer(),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: DotsContainer(
-                    isMoodAvailable,
-                    isSymptomAvailable,
-                    isHealthDataAvailable,
-                    (!daySelected ? colorGreen : Colors.white),
-                    (!daySelected ? colorOrange : Colors.white),
-                    (!daySelected ? colorRed : Colors.white),
+                  child: Container(
+                    child: DotsContainer(
+                      isMoodAvailable,
+                      isSymptomAvailable,
+                      isHealthDataAvailable,
+                      (!daySelected ? colorGreen : Colors.white),
+                      (!daySelected ? colorOrange : Colors.white),
+                      (!daySelected ? colorRed : Colors.white),
+                    ),
                   ),
                 ),
               ],

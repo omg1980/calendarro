@@ -10,7 +10,6 @@ class DefaultDayTileBuilder extends DayTileBuilder {
 
   @override
   Widget build(BuildContext context, DateTime date, DateTimeCallback onTap) {
-    // print('calendartro DefaultDayTileBuilder   ----day -  ${date.day} - dayfrom list - ${activitiesList[date.day]}');
     return CalendarroDayItem(
       date: date,
       calendarroState: Calendarro.of(context),
