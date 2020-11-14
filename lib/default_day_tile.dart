@@ -80,13 +80,15 @@ class CalendarroDayItem extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Container(
-                    child: DotsContainer(
-                      isMoodAvailable,
-                      isSymptomAvailable,
-                      isHealthDataAvailable,
-                      (!daySelected ? colorGreen : Colors.white),
-                      (!daySelected ? colorOrange : Colors.white),
-                      (!daySelected ? colorRed : Colors.white),
+                    child: FittedBox(
+                      child: DotsContainer(
+                        isMoodAvailable,
+                        isSymptomAvailable,
+                        isHealthDataAvailable,
+                        (!daySelected ? colorGreen : Colors.white),
+                        (!daySelected ? colorOrange : Colors.white),
+                        (!daySelected ? colorRed : Colors.white),
+                      ),
                     ),
                   ),
                 ),
